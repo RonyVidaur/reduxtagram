@@ -5,23 +5,22 @@ switch (action.type) {
       user: action.author,
       text: action.comment
     }]
-    case 'REMOVE_COMMENT':
-      // we need to return the new state without the deleted comment
-      return [
-      // from the start to the one we want to delete
-      ...state.slice(0,action.i),
-      // after the deleted one, to the end
+    break
+
+  case 'REMOVE_COMMENT':
+    return [
+      ...state.slice(0, action.i),
       ...state.slice(action.i + 1)
-          ]
+    ]
+    break
+
   default:
   return state
   }
 }
 
-
 function comments (state = [], action) {
   if(typeof action.postId !== 'undefined') {
-    console.log('im here and i work');
     return {
       ...state,
       // override this post with a new one
